@@ -1,0 +1,42 @@
+n = int(input("How many numbers do you want to check:"))
+x = 0
+
+#jak sprawdzić czy n(int) na wejsciu jest literą/znakiem/minusem/pusta linia/ by program sie nie wysypywal i pozwalal przejsc dalej? 
+
+def tribonnaci(n):
+    sequence = (0, 1, 2, 3)
+    a, b, c, d = sequence
+    while n > d:
+        d = a + b + c
+        a = b
+        b = c
+        c = d
+    return d
+
+
+while x < n:
+    num = input("Give a number to check:")
+    try:
+        val = int(num)
+    except ValueError:
+        print("Not an int! Please give a number:")
+
+        while x < n:
+            try:
+                val = ""
+            except ValueError:
+                print("Not an int! Please give a number:")
+    #jak zakonczyc petle i petle w petli aby program kontynuowal obliczenia nawet przy wprowadzeniu liter/znakow/liczby ujemnej/pustej linii?
+
+    if int(num) <= -1:
+        print(num + "\tFAIL. Number is minus")
+    elif int(num) == 0 or 1 or 2:
+        print(num + "\tYES")
+    else:
+        if tribonnaci(int(num)) == int(num):
+            print(num + "\tYES")
+        else:
+            print(num + "\tNO")
+
+    x = x + 1
+
